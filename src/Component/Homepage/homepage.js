@@ -98,8 +98,6 @@ export default function Homepage() {
                             <div className="wd wd-6 bld_0_0_0_1_">
                                 <nav data-navigation-menu="true" className=" bld_0_0_0_1_0_">
                                     <ul className=" bld_0_0_0_1_0_0_">
-                                        <li className=" bld_0_0_0_1_0_0_0_"><Link to="/" target="_self" className=" bld_0_0_0_1_0_0_0_0_">Home</Link></li>
-                                        <li className=" bld_0_0_0_1_0_0_1_"><a href="https://github.com/abhibagul/" target="_blank" className=" bld_0_0_0_1_0_0_1_0_">My Github</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -223,9 +221,6 @@ export default function Homepage() {
                 </div>
                 <div className="wd-row bld_9_">
                     <div className="wd wd-12 bld_9_0_">
-                        <p className=" bld_9_0_0_">WebPage Builder - Open Source Project
-                            <div><a href="https://github.com/abhibagul/Wix-Clone" target="_blank" rel="noopner noreffer">https://github.com/abhibagul/Wix-Clone/</a><br /></div>
-                        </p>
                     </div>
                 </div>
                 <div className="wd-row bld_10_"></div>
