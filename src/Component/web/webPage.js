@@ -88,7 +88,7 @@ export default function WebPage() {
                 {
                     props.e.map((el, i) => {
                         let htmlCon = "";
-                        if (el.hasOwnProperty("inHTML")) htmlCon = el.inHTML;
+                        if (el && el.hasOwnProperty("inHTML")) htmlCon = el.inHTML;
                         return (<GenerateHTMLComp element={el} datapath={props.datapath + i + ','} key={i} >{htmlCon}</GenerateHTMLComp>)
                     })
                 }
@@ -208,7 +208,7 @@ export default function WebPage() {
 
         for (let __e of __elm) {
             if (__posTop > (__e.getBoundingClientRect().top - (__wh * 0.9))) {
-                if (!__e.classList.contains("animate")) __e.classList.add("animate");
+                if (e.classList && !__e.classList.contains("animate")) __e.classList.add("animate");
             }
         }
     }

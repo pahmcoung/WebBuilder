@@ -55,7 +55,7 @@ export default function PreviewPage() {
                 {
                     props.e.map((el, i) => {
                         let htmlCon = "";
-                        if (el.hasOwnProperty("inHTML")) htmlCon = el.inHTML;
+                        if (el && el.hasOwnProperty("inHTML")) htmlCon = el.inHTML;
                         return (<GenerateHTMLComp element={el} datapath={props.datapath + i + ','} key={i} >{htmlCon}</GenerateHTMLComp>)
                     })
                 }

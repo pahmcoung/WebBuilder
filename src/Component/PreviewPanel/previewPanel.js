@@ -124,7 +124,7 @@ export default function PreviewPanel() {
                 dpa = (e.target.getAttribute("data-path"))
             }
             else {
-                if (e.target.hasAttribute("data-path"))
+                if (e.target && e.target.hasAttribute("data-path"))
                     dpa = (e.target.getAttribute("data-path"))
                 else
                     dpa = (e.target.querySelector("[data-path]").getAttribute("data-path"))
@@ -174,7 +174,7 @@ export default function PreviewPanel() {
                 {
                     props.e.map((el, i) => {
                         let htmlCon = "";
-                        if (el.hasOwnProperty("inHTML")) htmlCon = el.inHTML;
+                        if (el && el.hasOwnProperty("inHTML")) htmlCon = el.inHTML;
                         return (<GenerateHTMLComp element={el} datapath={props.datapath + i + ','} key={props.datapath + i + ','} >{htmlCon}</GenerateHTMLComp>)
                     })
                 }
@@ -784,7 +784,7 @@ export default function PreviewPanel() {
             let toPlaceNodeContent = get(_depth, 'elements[' + _dSel.join('].elements[') + ']');
             let currentNodeContent = get(_depth, 'elements[' + _elNode.join('].elements[') + '].elements');
 
-            if (!toPlaceNodeContent.enableDropping) {
+            if (toPlaceNodeContent && !toPlaceNodeContent.enableDropping) {
                 //TODO: Add this element next to this element!
                 alert("Can not add sub element to this element");
                 return;
@@ -812,7 +812,7 @@ export default function PreviewPanel() {
 
             if (_dSel.length > 0) {
                 toPlaceNodeContent = get(_depth, 'elements');
-                if (!_depth.enableDropping) {
+                if (_depth && !_depth.enableDropping) {
                     //TODO: Add this element next to this element!
                     alert("Can not add sub element to this element");
                     return;
@@ -820,13 +820,14 @@ export default function PreviewPanel() {
             } else {
                 toPlaceNodeContent = get(_depth, 'elements[' + _dSel.join('].elements[') + ']');
 
-                if (!toPlaceNodeContent.enableDropping) {
+                if (toPlaceNodeContent && !toPlaceNodeContent.enableDropping) {
                     //TODO: Add this element next to this element!
                     alert("Can not add sub element to this element");
                     return;
                 }
-
-                toPlaceNodeContent = toPlaceNodeContent.elements;
+                if (toPlaceNodeContent.elements) {
+                    toPlaceNodeContent = toPlaceNodeContent.elements;
+                }
             }
 
             //getter
@@ -892,7 +893,11 @@ export default function PreviewPanel() {
         }
 
         //select the element again after render
-        document.querySelector(`div[data-path="${dragEnterSelector.current}"]`).classList.add("temp_infocus");
+        let tempSelector = document.querySelector(`div[data-path="${dragEnterSelector.current}"]`)
+        if (tempSelector && tempSelector.classList){
+            tempSelector.classList.add("temp_infocus");
+        }
+        // document.querySelector(`div[data-path="${dragEnterSelector.current}"]`)
 
         let scrlTopp = document.querySelector("[data-panelmain]").scrollTop;
 
